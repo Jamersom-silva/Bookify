@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Autores - Bookfy</title>
+  <link rel="icon" href="../imagens/favicon.png">
+  <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/styles/estilo.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Header Global -->
+  <div id="global-header"></div>
+
+  <!-- Conteúdo da página -->
+  <section id="autores" style="margin-top: 80px;"> <!-- margem para não sobrepor navbar fixo -->
+    <div class="container">
+      <h2 class="text-center mb-4">Autores e suas Coleções</h2>
+
+      <div class="row" id="lista-autores">
+        <!-- Cards de autores serão injetados via JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer Global -->
+  <div id="global-footer"></div>
+
+  <!-- Scripts -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="../bootstrap/js/bootstrap.min.js"></script>
+  
+  <!-- Header e Footer globais -->
+  <script src="../header.js"></script>
+  <script src="../footer.js"></script>
+
+  <!-- Cards de autores -->
+  <script>
+    const autores = [
+      {
+        nome: "Autor 1",
+        foto: "../imagens/autor1.jpg",
+        livros: [
+          { titulo: "Acaba", capa: "../imagens/acaba.jpg" },
+          { titulo: "Nunca Desista", capa: "../imagens/nunca desista.jpg" }
+        ]
+      },
+      {
+        nome: "Autor 2",
+        foto: "../imagens/autor2.jpg",
+        livros: [
+          { titulo: "Nunca é a Hora", capa: "../imagens/nunca é a hora.jpg" },
+          { titulo: "Hábito", capa: "../imagens/habito.jpg" }
+        ]
+      }
+    ];
+
+    const listaAutoresDiv = document.getElementById('lista-autores');
+
+    autores.forEach(autor => {
+      const autorCard = document.createElement('div');
+      autorCard.classList.add('col-md-6', 'autor-card', 'mb-4');
+      autorCard.innerHTML = `
+        <div class="panel panel-default">
+          <div class="panel-heading text-center">
+            <img src="${autor.foto}" class="img-circle" width="80" alt="${autor.nome}">
+            <h4>${autor.nome}</h4>
+          </div>
+          <div class="panel-body">
+            <div class="row">
+              ${autor.livros.map(livro => `
+                <div class="col-md-6 text-center mb-3">
+                  <img src="${livro.capa}" class="img-responsive" alt="${livro.titulo}">
+                  <h5>${livro.titulo}</h5>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        </div>
+      `;
+      listaAutoresDiv.appendChild(autorCard);
+    });
+  </script>
+
+</body>
+</html>

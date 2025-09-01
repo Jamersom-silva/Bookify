@@ -12,7 +12,7 @@ html, body, .capa {
 
 body {
 	background: 
-				url('imagens/ruido.png'),
+				url(''),
 				linear-gradient(50deg,#ff4169,#7c26f8);
 	background-attachment: fixed;
 	font-family: Helvetica,Arial,sans-serif;
@@ -24,7 +24,7 @@ body {
 	height: 40px;
 	width: 132px;
 	display: block;
-	background: url('imagens/Bookify.png') no-repeat;
+	background: url('/imagens/Bookify.png') no-repeat;
 	background-size: contain;
 	color: transparent;
 }
